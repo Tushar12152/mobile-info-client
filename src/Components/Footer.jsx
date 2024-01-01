@@ -1,14 +1,39 @@
+import { useQuery } from "@tanstack/react-query";
 import useAuth from "../Hooks/useAuth";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+
 
 const Footer = () => {
 
-    const {googlepopUp}=useAuth()
+    const {googlepopUp,user}=useAuth()
+    const axiosSecure=useAxiosSecure()
+    const usersMail=user?.email;
+    const navigate=useNavigate()
+
+
+    const { data: users = [] } = useQuery({
+      queryKey: ['user'],
+      queryFn: async () => {
+        const res = await axiosSecure.get('/users');
+        return res.data;
+      },
+    });
+
+    // console.log(users);
+
+    const sameUser=users.find(user=>user.email===usersMail)
+    // console.log(sameUser);
+    const admin=users.find(user=>user.role==='admin')
+    // console.log(admin);
+
 
     const handleLogin=()=>{
         googlepopUp()
         
         .then(res=>{
-             console.log(res.user);
+            //  console.log(res.user);
 
              const admininfo={
                name:res?.user?.displayName,
@@ -17,8 +42,31 @@ const Footer = () => {
                img:res?.user?.photoURL
              }
 
+        if(!sameUser){
+          axiosSecure.post('/users',admininfo)
+          .then(res=>{
+           //  console.log(res.data);
+            if(res.data. insertedId){
+                navigate('/')
+                console.log('object');
+            }
+          })
+          .catch(err=>{
+            console.log(err.message);
+          })
 
-             
+        }else{
+           if(admin){
+            navigate('/dashboard')
+            // console.log('dassss');
+           }
+           return  toast.error('You are not admin')
+        
+        
+        }
+
+          
+
         })
         .catch(err=>{
             console.log(err.message);
