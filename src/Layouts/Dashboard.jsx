@@ -15,6 +15,16 @@ const Dashboard = () => {
                                
                                     Admin Profile</NavLink>
                             </li>
+                            <li>
+                                <NavLink to="/dashboard/add-mobile">
+                                       Add Mobile
+                                    </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/added-mobile">
+                                    Added Mobile
+                                  </NavLink>
+                            </li>
                            
                         </>
                            
