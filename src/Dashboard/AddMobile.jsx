@@ -1,8 +1,9 @@
+import { imageUpload } from "../APIS/UploadImage";
 import Title from "./Title";
 
 const AddMobile = () => {
 
-   const handleSubmit=e=>{
+   const handleSubmit=async e=>{
        e.preventDefault()
       
        const form=e.target;
@@ -20,11 +21,14 @@ const AddMobile = () => {
        const flash=form.flash.value;
        const status=form.status.value;
        const network=form.network.value;
+       const photo=form.photo.files[0]
+       const img=await imageUpload(photo)
+       const image=img?.data?.display_url
 
 
 
 
- console.log(name,brand,ram,rom,battery,processor,camara,price,color,screen,finger,flash,status,network);
+ console.log(name,brand,ram,rom,battery,processor,camara,price,color,screen,finger,flash,status,network,image);
 
 
    }
