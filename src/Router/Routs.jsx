@@ -4,6 +4,7 @@ import Home from "../Pages/Home";
 import Dashboard from "../Layouts/Dashboard";
 import AddMobile from "../Dashboard/AddMobile";
 import AddedMobile from "../Dashboard/AddedMobile";
+import AdminRoute from './AdminRoute';
 
 const Routs = createBrowserRouter([
     {
@@ -18,7 +19,9 @@ const Routs = createBrowserRouter([
     },
     {
         path:'/dashboard',
-        element:<Dashboard/>,
+        element:<AdminRoute>
+            <Dashboard/>
+        </AdminRoute>,
         children:[
             {
                 path:'/dashboard/add-mobile',

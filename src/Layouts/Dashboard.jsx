@@ -1,7 +1,26 @@
-import { FaHome } from "react-icons/fa";
-import { NavLink, Outlet } from "react-router-dom";
+import { FaHome, FaSignOutAlt } from "react-icons/fa";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Dashboard = () => {
+    const navigate=useNavigate()
+    const {logOut}=useAuth()
+const handleLogOut=()=>{
+    logOut()
+    .then(()=>{
+        toast.success("You are logged out ")
+        navigate('/')
+  
+   
+      })
+      .catch(err=>{
+         toast.error(err.message)
+      })
+    }
+
+
+
     return (
         <div>
             <div className="grid grid-cols-12 h-full">
@@ -39,6 +58,11 @@ const Dashboard = () => {
                         <NavLink to="/">
                             <FaHome></FaHome>
                             Home</NavLink>
+                    </li>
+                    <li>
+                        <button onClick={handleLogOut}>
+                            <FaSignOutAlt></FaSignOutAlt>
+                           Log Out</button>
                     </li>
                    
                 </ul>

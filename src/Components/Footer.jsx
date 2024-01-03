@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 
@@ -10,7 +10,7 @@ const Footer = () => {
     const {googlepopUp,user}=useAuth()
     const axiosSecure=useAxiosSecure()
     const usersMail=user?.email;
-    const navigate=useNavigate()
+   
 
 
     const { data: users = [] } = useQuery({
@@ -25,7 +25,7 @@ const Footer = () => {
 
     const sameUser=users.find(user=>user.email===usersMail)
     // console.log(sameUser);
-    const admin=users.find(user=>user.role==='admin')
+ 
     // console.log(admin);
 
 
@@ -47,23 +47,19 @@ const Footer = () => {
           .then(res=>{
            //  console.log(res.data);
             if(res.data. insertedId){
-                navigate('/')
-                console.log('object');
+               toast.success('You are signed in')
             }
           })
           .catch(err=>{
-            console.log(err.message);
+            toast.error(err.message);
           })
 
-        }else{
-           if(admin){
-            navigate('/dashboard')
-            // console.log('dassss');
-           }
-           return  toast.error('You are not admin')
-        
-        
         }
+        else{
+              toast.success('Your Info is already in Database')
+        }
+        
+      
 
           
 
@@ -106,7 +102,9 @@ const Footer = () => {
   </nav> 
   <nav>
   <header className="footer-title">Admin</header> 
-    <button onClick={handleLogin} className="link link-hover">Go to Dashboard</button>
+    <button onClick={handleLogin} className="link link-hover">Sign in      {user?'(logged In)':''}</button>
+  
+    <Link to='/dashboard' className="link link-hover">Dashboard</Link>
    
   </nav>
 </footer>
