@@ -1,7 +1,11 @@
+import swal from "sweetalert";
 import { imageUpload } from "../APIS/UploadImage";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Title from "./Title";
 
 const AddMobile = () => {
+    const axiosSecure=useAxiosSecure()
+
 
    const handleSubmit=async e=>{
        e.preventDefault()
@@ -25,10 +29,18 @@ const AddMobile = () => {
        const img=await imageUpload(photo)
        const image=img?.data?.display_url
 
+       const mobile={
+        name,brand,ram,rom,battery,processor,camara,price,color,screen,finger,flash,status,network,image
+       }
+
+     const result=await axiosSecure.post('/mobiles',mobile)
+      if(result.data.insertedId){
+        swal('success','Your mobile is added','success')
+    }
 
 
 
- console.log(name,brand,ram,rom,battery,processor,camara,price,color,screen,finger,flash,status,network,image);
+//  console.log(name,brand,ram,rom,battery,processor,camara,price,color,screen,finger,flash,status,network,image);
 
 
    }
