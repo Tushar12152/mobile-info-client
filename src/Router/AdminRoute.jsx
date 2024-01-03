@@ -4,12 +4,12 @@ import useAuth from '../Hooks/useAuth';
 import toast from 'react-hot-toast';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const AdminRoute = ({children}) => {
 
     const  {user,loading}=useAuth()
-
+    const navigate=useNavigate()
     const axiosSecure=useAxiosSecure()
     const usersMail=user?.email;
     
@@ -33,11 +33,7 @@ const AdminRoute = ({children}) => {
     if(loading){
         return (
             <div className="flex flex-col gap-2 items-center justify-center mt-40">
-               <progress className="progress progress-error w-56" value={0} max="100"></progress>
-      <progress className="progress progress-error w-56" value="10" max="100"></progress>
-      <progress className="progress progress-error w-56" value="40" max="100"></progress>
-       <progress className="progress progress-error w-56" value="70" max="100"></progress>
-      <progress className="progress progress-error w-56" value="100" max="100"></progress>
+               <progress className="progress w-56"></progress>
             </div>
           );
     }
@@ -48,14 +44,12 @@ const AdminRoute = ({children}) => {
          }
          return <Navigate to='/'></Navigate>
     }
-    
-   toast.error('you are not logged in')
-
-
-
-
-
-
+   else{
+   
+    toast.error('you are not logged in')
+    return <Navigate to='/'></Navigate>
+   }
+  
  
 };
 

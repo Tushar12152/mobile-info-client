@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import toast from "react-hot-toast";
 
 
@@ -9,7 +9,7 @@ const Footer = () => {
 
     const {googlepopUp,user}=useAuth()
     const axiosSecure=useAxiosSecure()
-    const usersMail=user?.email;
+  
    
 
 
@@ -23,10 +23,9 @@ const Footer = () => {
 
     // console.log(users);
 
-    const sameUser=users.find(user=>user.email===usersMail)
-    // console.log(sameUser);
+    
  
-    // console.log(admin);
+    
 
 
     const handleLogin=()=>{
@@ -42,23 +41,23 @@ const Footer = () => {
                img:res?.user?.photoURL
              }
 
-        if(!sameUser){
-          axiosSecure.post('/users',admininfo)
-          .then(res=>{
-           //  console.log(res.data);
-            if(res.data. insertedId){
-               toast.success('You are signed in')
-            }
-          })
-          .catch(err=>{
-            toast.error(err.message);
-          })
+             const sameUser = users.find(user => user.email === res?.user?.email);
 
-        }
-        else{
-              toast.success('Your Info is already in Database')
-        }
-        
+             if(!sameUser){
+               axiosSecure.post('/users', admininfo)
+                 .then(res => {
+                   if (res.data.insertedId) {
+                     toast.success('You are signed in');
+                   } else {
+                     toast.error('Failed to add user info');
+                   }
+                 })
+                 .catch(err => {
+                   toast.error('Error adding user info: ' + err.message);
+                 });
+             } else {
+               toast.success('Your Info is already in the Database');
+             }
       
 
           
