@@ -25,11 +25,15 @@ const Routs = createBrowserRouter([
         children:[
             {
                 path:'/dashboard/add-mobile',
-                element:<AddMobile/>
+                element:<AdminRoute>
+                    <AddMobile/>
+                </AdminRoute>
             },
             {
                 path:'/dashboard/added-mobile',
-                element:<AddedMobile/>
+                element:<AdminRoute>
+                    <AddedMobile/>
+                </AdminRoute>
             },
         ]
     }

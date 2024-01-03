@@ -4,12 +4,12 @@ import useAuth from '../Hooks/useAuth';
 import toast from 'react-hot-toast';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const AdminRoute = ({children}) => {
 
     const  {user,loading}=useAuth()
-    const navigate=useNavigate()
+    
     const axiosSecure=useAxiosSecure()
     const usersMail=user?.email;
     

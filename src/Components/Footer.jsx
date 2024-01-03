@@ -101,7 +101,7 @@ const Footer = () => {
   </nav> 
   <nav>
   <header className="footer-title">Admin</header> 
-    <button onClick={handleLogin} className="link link-hover">Sign in      {user?'(logged In)':''}</button>
+    <button onClick={handleLogin} className="link link-hover">Sign in      {user?`(logged In )`:''}</button>
   
     <Link to='/dashboard' className="link link-hover">Dashboard</Link>
    
