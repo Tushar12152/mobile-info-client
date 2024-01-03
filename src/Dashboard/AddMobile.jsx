@@ -1,19 +1,50 @@
 import Title from "./Title";
 
 const AddMobile = () => {
+
+   const handleSubmit=e=>{
+       e.preventDefault()
+      
+       const form=e.target;
+       const name=form.mobile.value;
+       const brand=form.brand.value;
+       const ram=form.ram.value;
+       const rom=form.rom.value;
+       const battery=form.battery.value;
+       const processor=form.processor.value;
+       const camara=form.camara.value;
+       const price=form.price.value;
+       const color=form.color.value;
+       const screen=form.screen.value;
+       const finger=form.finger.value;
+       const flash=form.flash.value;
+       const status=form.status.value;
+       const network=form.network.value;
+
+
+
+
+ console.log(name,brand,ram,rom,battery,processor,camara,price,color,screen,finger,flash,status,network);
+
+
+   }
+
+
+
+
     return (
         <div>
              <Title heading={'Add Mobile'}></Title>
 
 
-             <form className="card-body">
+             <form onSubmit={handleSubmit} className="card-body">
 
              <div className="flex gap-2">
       <div className="form-control w-[20%]">
           <label className="label">
             <span className="label-text">Phone Name</span>
           </label>
-          <input type="text" name="mobile-name" placeholder="Phone Name" className="input input-bordered border-purple-500" required />
+          <input type="text" name="mobile" placeholder="Phone Name" className="input input-bordered border-purple-500" required />
         </div>
         <div className="form-control  w-[20%]">
           <label className="label">
@@ -97,7 +128,7 @@ const AddMobile = () => {
           <label className="label">
             <span className="label-text">Finger-Print</span>
           </label>
-          <input type="text" name="finger-print" placeholder="Finger-Print" className="input input-bordered border-purple-500" required />
+          <input type="text" name="finger" placeholder="Finger-Print" className="input input-bordered border-purple-500" required />
         </div>
         <div className="form-control  w-[20%]">
           <label className="label">
@@ -120,15 +151,23 @@ const AddMobile = () => {
           <input type="text" name="network" placeholder="Network" className="input border-pink-400 input-bordered" required />        
         </div>
 
+        
+
+
         <div className="form-control  w-[20%]">
           <label className="label">
-            <span className="label-text">Video</span>
+            <span className="label-text">Upload Photo</span>
           </label>
-          <input type="text" name="video" placeholder="Video" className="input border-pink-500 input-bordered" required />        
+          <input
+                className="input border-pink-500 input-bordered"
+                required
+                type='file'
+                id='image'
+                name='photo'
+                accept='image/*'
+              />
+         
         </div>
-
-
-
 
 
 
