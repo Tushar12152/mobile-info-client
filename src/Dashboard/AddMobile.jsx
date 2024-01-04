@@ -2,10 +2,12 @@ import swal from "sweetalert";
 import { imageUpload } from "../APIS/UploadImage";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Title from "./Title";
+import useAuth from './../Hooks/useAuth';
 
 const AddMobile = () => {
     const axiosSecure=useAxiosSecure()
-
+    const {user}=useAuth()
+    const  addedBy=user?.email;
 
    const handleSubmit=async e=>{
        e.preventDefault()
@@ -27,10 +29,15 @@ const AddMobile = () => {
        const network=form.network.value;
        const photo=form.photo.files[0]
        const img=await imageUpload(photo)
-       const image=img?.data?.display_url
+       const image=img?.data?.display_url;
+       const fontCamara=form.fontCamara.value;
+       const sim=form.sim.value;
+       const usb=form.usb.value;
+       const radio=form.radio.value;
+       const faceLock=form.faceLock.value;
 
        const mobile={
-        name,brand,ram,rom,battery,processor,camara,price,color,screen,finger,flash,status,network,image
+        name,brand,ram,rom,battery,processor,camara,price,color,screen,finger,flash,status,network,image,addedBy,fontCamara,sim,usb,radio,faceLock
        }
 
      const result=await axiosSecure.post('/mobiles',mobile)
@@ -106,7 +113,7 @@ const AddMobile = () => {
         </div>
         <div className="form-control  w-[20%]">
           <label className="label">
-            <span className="label-text">Camara</span>
+            <span className="label-text">Back Camara</span>
           </label>
           <input type="text" name="camara" placeholder="Camara" className="input input-bordered border-purple-400" required />        
         </div>
@@ -188,6 +195,66 @@ const AddMobile = () => {
 
 
              </div>
+
+
+
+
+
+
+             <div className="flex gap-2">
+      <div className="form-control w-[20%]">
+          <label className="label">
+            <span className="label-text">Font-Camara</span>
+          </label>
+          <input type="text" name="fontCamara" placeholder="Font-Camara" className="input input-bordered border-purple-500" required />
+        </div>
+        <div className="form-control  w-[20%]">
+          <label className="label">
+            <span className="label-text">Sim</span>
+          </label>
+          <input type="text" name="sim" placeholder="Sim" className="input input-bordered border-purple-400" required />        
+        </div>
+
+        <div className="form-control  w-[20%]">
+          <label className="label">
+            <span className="label-text">Usb</span>
+          </label>
+          <input type="text" name="usb" placeholder="Usb" className="input border-purple-300 input-bordered" required />        
+        </div>
+
+        <div className="form-control  w-[20%]">
+          <label className="label">
+            <span className="label-text">Radio</span>
+          </label>
+          <input type="text" name="radio" placeholder="Radio" className="input border-pink-400 input-bordered" required />        
+        </div>
+
+        <div className="form-control  w-[20%]">
+          <label className="label">
+            <span className="label-text">Face-lock</span>
+          </label>
+          <input type="text" name="faceLock" placeholder="Face-lock" className="input border-pink-500 input-bordered" required />        
+        </div>
+
+
+
+
+
+
+             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
             
 
         <div className="form-control mt-6">
