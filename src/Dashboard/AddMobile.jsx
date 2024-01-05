@@ -11,7 +11,7 @@ const AddMobile = () => {
 
    const handleSubmit=async e=>{
        e.preventDefault()
-      
+     
        const form=e.target;
        const name=form.mobile.value;
        const brand=form.brand.value;
