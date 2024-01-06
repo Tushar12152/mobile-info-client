@@ -3,6 +3,8 @@ import Title from "./Title";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { MdDelete, MdModeEdit } from "react-icons/md";
 import swal from "sweetalert";
+import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const AddedMobile = () => {
     
@@ -40,6 +42,9 @@ const handleDelete=(id,item)=>{
                 swal('succeess',`${item} is deleted!`,'success')
                 refetch()
             }
+      })
+      .catch(err=>{
+           toast.error(err.message)
       })
 
 
@@ -91,7 +96,7 @@ const handleDelete=(id,item)=>{
         <td>
          {mobile?.addedBy}
         </td>
-        <td><button className="text-2xl text-purple-500"><MdModeEdit /></button></td>
+        <td><Link to={`/dashboard/update/${mobile?._id}`}><button className="text-2xl text-purple-500"><MdModeEdit /></button></Link></td>
         <th>
           <button onClick={()=>handleDelete(mobile?._id,mobile?.name)} className="text-2xl text-pink-500"><MdDelete/></button>
         </th>

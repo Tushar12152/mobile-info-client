@@ -5,6 +5,7 @@ import Dashboard from "../Layouts/Dashboard";
 import AddMobile from "../Dashboard/AddMobile";
 import AddedMobile from "../Dashboard/AddedMobile";
 import AdminRoute from './AdminRoute';
+import UpdateMobile from "../Dashboard/UpdateMobile";
 
 const Routs = createBrowserRouter([
     {
@@ -34,6 +35,13 @@ const Routs = createBrowserRouter([
                 element:<AdminRoute>
                     <AddedMobile/>
                 </AdminRoute>
+            },
+            {
+                path:'/dashboard/update/:id',
+                element:<AdminRoute>
+                    <UpdateMobile/>
+                </AdminRoute>,
+                loader:({params})=>fetch(`http://localhost:5002/mobiles/${params.id}`)
             },
         ]
     }
