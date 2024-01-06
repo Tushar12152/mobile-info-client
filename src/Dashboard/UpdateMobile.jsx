@@ -1,13 +1,56 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Title from "./Title";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const UpdateMobile = () => {
   const data = useLoaderData();
-
-
+  const axiosSecure=useAxiosSecure()
+  const navigate=useNavigate()
 
 const handleSubmit=(e)=>{
     e.preventDefault()
+
+
+
+
+    const form=e.target;
+       const name=form.mobile.value;
+       const brand=form.brand.value;
+       const ram=form.ram.value;
+       const rom=form.rom.value;
+       const battery=form.battery.value;
+       const processor=form.processor.value;
+       const camara=form.camara.value;
+       const price=form.price.value;
+       const color=form.color.value;
+       const screen=form.screen.value;
+       const finger=form.finger.value;
+       const flash=form.flash.value;
+       const status=form.status.value;
+       const network=form.network.value;
+      
+       const fontCamara=form.fontCamara.value;
+       const sim=form.sim.value;
+       const usb=form.usb.value;
+       const radio=form.radio.value;
+       const faceLock=form.faceLock.value;
+
+       const UpdateMobileData={
+        name,brand,ram,rom,battery,processor,camara,price,color,screen,finger,flash,status,network,fontCamara,sim,usb,radio,faceLock
+       }
+
+      //  console.log(UpdateMobileData);
+
+       axiosSecure.patch(`/mobiles/${data?._id}`,UpdateMobileData)
+       .then(res=>{
+           if(res.data.modifiedCount>0){
+                   toast.success(`${name} is successfully Updated`)
+                   navigate(-1)
+            }
+       })
+
+
 }
 
 
