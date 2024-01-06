@@ -2,12 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import Title from "./Title";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { MdDelete, MdModeEdit } from "react-icons/md";
+import swal from "sweetalert";
 
 const AddedMobile = () => {
     
    const axiosSecure=useAxiosSecure()
 
-    const { data:mobiles= [] } = useQuery({
+    const { data:mobiles= [],refetch } = useQuery({
         queryKey: ['mobile'],
         queryFn: async () => {
           const res = await axiosSecure.get('/mobiles');
@@ -17,6 +18,38 @@ const AddedMobile = () => {
 
 
 // console.log(mobiles);
+
+
+
+
+const handleDelete=(id,item)=>{
+    
+  swal({
+    title: "Are you sure?",
+    text: "Once deleted, you will not be able to recover this imaginary file!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+      
+      axiosSecure.delete(`/mobiles/${id}`)
+      .then(res=>{
+            if(res.data.deletedCount>0){
+                swal('succeess',`${item} is deleted!`,'success')
+                refetch()
+            }
+      })
+
+
+    } else {
+      swal("Your imaginary file is safe!");
+    }
+  });
+
+}
+
 
 
     return (
@@ -58,9 +91,9 @@ const AddedMobile = () => {
         <td>
          {mobile?.addedBy}
         </td>
-        <td><button className="text-2xl"><MdModeEdit /></button></td>
+        <td><button className="text-2xl text-purple-500"><MdModeEdit /></button></td>
         <th>
-          <button className="text-2xl"><MdDelete/></button>
+          <button onClick={()=>handleDelete(mobile?._id,mobile?.name)} className="text-2xl text-pink-500"><MdDelete/></button>
         </th>
       </tr>)}
      
