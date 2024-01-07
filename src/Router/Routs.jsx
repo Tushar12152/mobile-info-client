@@ -6,6 +6,8 @@ import AddMobile from "../Dashboard/AddMobile";
 import AddedMobile from "../Dashboard/AddedMobile";
 import AdminRoute from './AdminRoute';
 import UpdateMobile from "../Dashboard/UpdateMobile";
+import AddAddver from "../Dashboard/AddAddvwe";
+import AddedAddver from "../Dashboard/AddedAddver";
 
 const Routs = createBrowserRouter([
     {
@@ -42,6 +44,14 @@ const Routs = createBrowserRouter([
                     <UpdateMobile/>
                 </AdminRoute>,
                 loader:({params})=>fetch(`http://localhost:5002/mobiles/${params.id}`)
+            },
+            {
+                path:"/dashboard/add-addvertisement",
+                element:<AddAddver/>
+            },
+            {
+                path:"/dashboard/added-addvertisement",
+                element:<AddedAddver/>
             },
         ]
     }

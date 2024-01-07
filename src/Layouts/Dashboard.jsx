@@ -44,6 +44,16 @@ const handleLogOut=()=>{
                                     Added Mobile
                                   </NavLink>
                             </li>
+                            <li>
+                                <NavLink to="/dashboard/add-addvertisement">
+                                    Add Addvertisement
+                                  </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/added-addvertisement">
+                                    Added Addvertisement
+                                  </NavLink>
+                            </li>
                            
                         </>
                            
