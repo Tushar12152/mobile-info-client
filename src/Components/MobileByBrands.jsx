@@ -1,7 +1,22 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import Mobiles from './mobiles';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 const MobileByBrands = () => {
+
+  const axiosSecure=useAxiosSecure()
+
+
+  const { data: mobiles = [] } = useQuery({
+    queryKey: ['user'],
+    queryFn: async () => {
+      const res = await axiosSecure.get('/mobiles');
+      return res.data;
+    },
+  });
+
     return (
         <div className='border-t mt-10 border-black'>
              <Tabs>
@@ -28,6 +43,7 @@ const MobileByBrands = () => {
 
     <TabPanel>
       <h2>Any content 1</h2>
+      <Mobiles mobiles={mobiles}></Mobiles>
     </TabPanel>
     <TabPanel>
       <h2>Any content 2</h2>

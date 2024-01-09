@@ -3,18 +3,26 @@ import { imageUpload } from "../APIS/UploadImage";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Title from "./Title";
 import useAuth from './../Hooks/useAuth';
+import { useState } from "react";
 
 const AddMobile = () => {
     const axiosSecure=useAxiosSecure()
     const {user}=useAuth()
     const  addedBy=user?.email;
 
+    const [category, setCategory] = useState('Samsung');
+
+    const handleSelectChange = (event) => {
+      setCategory(event.target.value);
+    };
+  
+
    const handleSubmit=async e=>{
        e.preventDefault()
      
        const form=e.target;
        const name=form.mobile.value;
-       const brand=form.brand.value;
+       const brand=category;
        const ram=form.ram.value;
        const rom=form.rom.value;
        const battery=form.battery.value;
@@ -47,7 +55,7 @@ const AddMobile = () => {
 
 
 
-//  console.log(name,brand,ram,rom,battery,processor,camara,price,color,screen,finger,flash,status,network,image);
+//  console.log(mobile);
 
 
    }
@@ -69,11 +77,27 @@ const AddMobile = () => {
           </label>
           <input type="text" name="mobile" placeholder="Phone Name" className="input input-bordered border-purple-500" required />
         </div>
+
         <div className="form-control  w-[20%]">
-          <label className="label">
-            <span className="label-text">Brand</span>
-          </label>
-          <input type="text" name="brand" placeholder="Brand" className="input input-bordered border-purple-400" required />        
+        <label htmlFor="selectOption">Brand</label>
+    <select className="input input-bordered border-purple-400" id="category" name="category" value={category} onChange={handleSelectChange}>
+      <option value="Samsung">Samsung</option>
+      <option value="Apple">Apple</option>
+      <option value="VIVO">VIVO</option>
+      <option value="OPPO">OPPO</option>
+      <option value="NOKIA">NOKIA</option>
+      <option value="onePlus">One Plus</option>
+      <option value="Motorola">Motorola</option>
+      <option value="Huawei">Huawei</option>
+      <option value="LG">LG</option>
+      <option value="Google">Google</option>
+      <option value="Infinix">Infinix</option>
+      <option value="Tesla">Tesla</option>
+      <option value="Lava">Lava</option>
+      <option value="htc">htc</option>
+      <option value="Sony">Sony</option>
+  
+    </select>      
         </div>
 
         <div className="form-control  w-[20%]">
