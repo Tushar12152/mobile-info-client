@@ -1,7 +1,12 @@
 import { imageUpload } from "../APIS/UploadImage";
 import Title from "./Title";
+import useAxiosSecure from './../Hooks/useAxiosSecure';
+import swal from "sweetalert";
 
 const AddAddver = () => {
+
+    const axiosSecure=useAxiosSecure()
+
 
    const handleSubmit=async e=>{
          e.preventDefault()
@@ -13,7 +18,17 @@ const AddAddver = () => {
          const img=await imageUpload(photo)
          const image=img?.data?.display_url;
 
-         console.log(title,description,Company,image);
+        //  console.log(title,description,Company,image);
+
+        const add={
+            title,description,Company,image
+        }
+
+       const added=await axiosSecure.post('/adds',add)
+       if(added.data.insertedId){
+           swal('success','This Addvertisement is added','success')
+       }
+        
    }
 
     return (
