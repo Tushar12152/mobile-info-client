@@ -10,9 +10,7 @@ const Mobile = ({mobile}) => {
   <div className="card-body">
     <h2 className="card-title">{mobile?.name}</h2>
     <p>{mobile.brand}</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
-    </div>
+    
   </div>
 </div>
         </div>

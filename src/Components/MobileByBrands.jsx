@@ -10,7 +10,7 @@ const MobileByBrands = () => {
 
 
   const { data: mobiles = [] } = useQuery({
-    queryKey: ['user'],
+    queryKey: ['mobile'],
     queryFn: async () => {
       const res = await axiosSecure.get('/mobiles');
       return res.data;
