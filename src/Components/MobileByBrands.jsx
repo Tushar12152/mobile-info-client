@@ -42,7 +42,7 @@ const MobileByBrands = () => {
     </TabList>
 
     <TabPanel>
-      <h2>Any content 1</h2>
+     
       <Mobiles mobiles={mobiles}></Mobiles>
     </TabPanel>
     <TabPanel>

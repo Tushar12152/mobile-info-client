@@ -33,7 +33,7 @@ const Mobiles = ({ mobiles }) => {
           <div className="border-2 min-h-screen border-black w-[20%] rounded-md">
             {adds.map((add) => (
               <div key={add?._id}>
-                <div className="card w-60 p-2 bg-base-100 shadow-xl image-full">
+                <div className="card w-60 p-2 mx-auto mt-2 bg-base-100 shadow-xl image-full">
                   <figure>
                     <img
                       src={add?.image}
