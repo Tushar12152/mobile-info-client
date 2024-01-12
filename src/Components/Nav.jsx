@@ -5,11 +5,11 @@ const Nav = () => {
     return (
       <Responsive>
           <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar">
   <div className="flex-1">
-    <img className="lg:w-36 w-20" src={'https://i.ibb.co/B3hFDNN/mobile-phone-in-hand-with-information-on-display-line-icon-info-for-customer-on-smartphone-screen-li.jpg'} alt="" />
+    <img className="lg:w-32 w-20" src={'https://i.ibb.co/B3hFDNN/mobile-phone-in-hand-with-information-on-display-line-icon-info-for-customer-on-smartphone-screen-li.jpg'} alt="" />
 
-    <h1 className="font-bold lg:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
+    <h1 className="font-bold lg:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
     Mobile Info
 </h1>
   </div>
