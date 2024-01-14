@@ -36,7 +36,7 @@ const handleDelete=(id,item)=>{
   .then((willDelete) => {
     if (willDelete) {
       
-      axiosSecure.delete(`/mobiles/${id}`)
+      axiosSecure.delete(`/adds/${id}`)
       .then(res=>{
             if(res.data.deletedCount>0){
                 swal('succeess',`${item} is deleted!`,'success')
@@ -98,7 +98,7 @@ const handleDelete=(id,item)=>{
         </td>
         <td><Link to={`/dashboard/update/${add?._id}`}><button className="text-2xl text-purple-500"><MdModeEdit /></button></Link></td>
         <th>
-          <button onClick={()=>handleDelete(add?._id,add?.name)} className="text-2xl text-pink-500"><MdDelete/></button>
+          <button onClick={()=>handleDelete(add?._id,add?.title)} className="text-2xl text-pink-500"><MdDelete/></button>
         </th>
       </tr>)}
      
