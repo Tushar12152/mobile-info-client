@@ -8,6 +8,7 @@ import AdminRoute from './AdminRoute';
 import UpdateMobile from "../Dashboard/UpdateMobile";
 import AddAddver from "../Dashboard/AddAddvwe";
 import AddedAddver from "../Dashboard/AddedAddver";
+import AdminProfile from "../Dashboard/AdminProfile";
 
 const Routs = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ const Routs = createBrowserRouter([
                 path:"/dashboard/added-addvertisement",
                 element:<AddedAddver/>
             },
+            {
+                 path:'/dashboard/adminProfile',
+                 element:<AdminProfile/>
+            }
         ]
     }
 ])
