@@ -54,6 +54,11 @@ const handleLogOut=()=>{
                                     Added Addvertisement
                                   </NavLink>
                             </li>
+                            <li>
+                                <NavLink to="/dashboard/manage-users">
+                                    Manage Users
+                                  </NavLink>
+                            </li>
                            
                         </>
                            

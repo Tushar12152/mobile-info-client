@@ -9,6 +9,7 @@ import UpdateMobile from "../Dashboard/UpdateMobile";
 import AddAddver from "../Dashboard/AddAddvwe";
 import AddedAddver from "../Dashboard/AddedAddver";
 import AdminProfile from "../Dashboard/AdminProfile";
+import ManageUsers from "../Dashboard/ManageUsers";
 
 const Routs = createBrowserRouter([
     {
@@ -57,6 +58,10 @@ const Routs = createBrowserRouter([
             {
                  path:'/dashboard/adminProfile',
                  element:<AdminProfile/>
+            },
+            {
+                path:'/dashboard/manage-users',
+                element:<ManageUsers/>
             }
         ]
     }
