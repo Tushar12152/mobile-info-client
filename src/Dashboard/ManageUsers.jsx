@@ -1,9 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Title from "./Title";
+import useAuth from "../Hooks/useAuth";
 
 const ManageUsers = () => {
     const axiosSecure=useAxiosSecure()
+    const {user}=useAuth()
+    const usersMail=user?.email
+    // console.log(usersMail);
     const { data: users = [] } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {
@@ -12,11 +16,16 @@ const ManageUsers = () => {
         },
       });
   
-      console.log(users);
+    //   console.log(users);
+
+    const withOutThisUSer=users.filter(user=>user?.email!==usersMail)
+    console.log(withOutThisUSer);
+
   
 
-      const handleDelete=(id)=>{
+      const handleDelete=(id,name)=>{
            console.log(id);
+           
       }
 
 
@@ -42,7 +51,7 @@ const ManageUsers = () => {
       </tr>
     </thead>
     <tbody>
-      {users.map((user,i)=> <tr key={user._id}>
+      {withOutThisUSer.map((user,i)=> <tr key={user._id}>
         <th>
           {i+1}
         </th>
@@ -60,9 +69,9 @@ const ManageUsers = () => {
         <td>
          {user?.email}
         </td>
-        <td><button className="text-2xl text-purple-500">{user?.role} </button></td>
+        <td><button className=" btn bg-purple-500 text-white">{user?.role} </button></td>
         <th>
-          <button onClick={()=>handleDelete(user?._id,user?.name)} className="text-2xl text-pink-500">Remove</button>
+          <button onClick={()=>handleDelete(user?._id,user?.name)} className="btn bg-pink-500 text-white">Remove</button>
         </th>
       </tr>)}
      
