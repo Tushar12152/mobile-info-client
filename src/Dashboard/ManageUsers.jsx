@@ -2,13 +2,20 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Title from "./Title";
 import useAuth from "../Hooks/useAuth";
+import toast from "react-hot-toast";
+import { useState } from "react";
 
 const ManageUsers = () => {
     const axiosSecure=useAxiosSecure()
     const {user}=useAuth()
     const usersMail=user?.email
     // console.log(usersMail);
-    const { data: users = [] } = useQuery({
+     const [toggle,setToggle]=useState(true)
+    //   console.log(toggle);
+     const [role,setRole]=useState('user')
+
+
+    const { data: users = [],refetch } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {
           const res = await axiosSecure.get('/users');
@@ -19,11 +26,31 @@ const ManageUsers = () => {
     //   console.log(users);
 
     const withOutThisUSer=users.filter(user=>user?.email!==usersMail)
-    console.log(withOutThisUSer);
+    // console.log(withOutThisUSer);
 
+    const handleRole=(id)=>{
+       toggle?setRole('user'):setRole('admin')
+
+    //    console.log(role);
+         const info={
+            role
+         }
+
+
+             axiosSecure.patch(`/users/${id}`,info)
+             .then(res=>{
+                 if(res.data.modifiedCount>0){
+
+                     refetch()
+                 }
+             })
+             .catch(err=>{
+                toast.error(err.message)
+           })
+    }
   
 
-      const handleDelete=(id,name)=>{
+      const handleDelete=(id)=>{
            console.log(id);
            
       }
@@ -69,7 +96,9 @@ const ManageUsers = () => {
         <td>
          {user?.email}
         </td>
-        <td><button className=" btn bg-purple-500 text-white">{user?.role} </button></td>
+        <td><div onClick={()=>setToggle(!toggle)}>
+        <button onClick={()=>handleRole(user?._id)} className=" btn bg-purple-500 text-white">{user?.role} </button>
+            </div></td>
         <th>
           <button onClick={()=>handleDelete(user?._id,user?.name)} className="btn bg-pink-500 text-white">Remove</button>
         </th>
