@@ -58,7 +58,7 @@ const ManageUsers = () => {
 
           swal({
             title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this imaginary file!",
+            text: "you will not be able to recover this user",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -78,12 +78,9 @@ const ManageUsers = () => {
               })
 
             } else {
-              swal("Your imaginary file is safe!");
+              swal("Your user is safe!");
             }
           });
-
-
-
 
 
 
