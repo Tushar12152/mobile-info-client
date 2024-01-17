@@ -4,6 +4,7 @@ import Title from "./Title";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import swal from "sweetalert";
 
 const ManageUsers = () => {
     const axiosSecure=useAxiosSecure()
@@ -40,7 +41,7 @@ const ManageUsers = () => {
              axiosSecure.patch(`/users/${id}`,info)
              .then(res=>{
                  if(res.data.modifiedCount>0){
-
+                      toast.success('Role is Change')
                      refetch()
                  }
              })
@@ -50,8 +51,43 @@ const ManageUsers = () => {
     }
   
 
-      const handleDelete=(id)=>{
-           console.log(id);
+      const handleDelete=(id,name)=>{
+          //  console.log(id);
+
+
+
+          swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+             
+              axiosSecure.delete(`/users/${id}`)
+              .then(res=>{
+                 if(res.data.deletedCount>0){
+                      toast.success(`${name} is deleted `)
+                      refetch()
+                 }
+              })
+              .catch(err=>{
+                  toast.error(err)
+              })
+
+            } else {
+              swal("Your imaginary file is safe!");
+            }
+          });
+
+
+
+
+
+
+         
            
       }
 
