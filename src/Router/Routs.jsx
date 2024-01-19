@@ -10,6 +10,7 @@ import AddAddver from "../Dashboard/AddAddvwe";
 import AddedAddver from "../Dashboard/AddedAddver";
 import AdminProfile from "../Dashboard/AdminProfile";
 import ManageUsers from "../Dashboard/ManageUsers";
+import MobileDetail from "../Components/MobileDetail";
 
 const Routs = createBrowserRouter([
     {
@@ -19,6 +20,11 @@ const Routs = createBrowserRouter([
             {
                 path:"/",
                 element:<Home/>
+            },
+            {
+                path:'/description/:id',
+                element:<MobileDetail/>,
+                loader:({params})=>fetch(`http://localhost:5002/mobiles/${params.id}`)
             }
         ]
     },
