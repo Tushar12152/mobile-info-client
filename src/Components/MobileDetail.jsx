@@ -11,7 +11,7 @@ const MobileDetail = () => {
             <Responsive>
                   <h1 className="text-center font-bold text-3xl py-5">{name},s Details</h1>
                  <div className="mx-auto ">
-                 <img className="mx-auto py-10 w-[200px]" src={image} alt="" />
+                 <img className="mx-auto py-10 w-[200px] animate-bounce mt-5" src={image} alt="" />
                  </div>
                  <div className="border-2 border-b-0 border-black  w-full">
                             <h1 className="text-center  bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500  font-bold ">Basic Info</h1>
@@ -126,7 +126,117 @@ const MobileDetail = () => {
                          </div>   
                     </div>
    </div>
+ 
 
+
+   <div className="mt-2">
+   <div className="border-2 border-b-0 border-black  w-full">
+                            <h1 className="text-center  bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500  font-bold ">Design</h1>
+                         </div>
+
+                    <div className="flex ">
+                         <div className="border-2 border-black  w-[50%]">
+                            <h1 className="text-center">color</h1>
+                         </div>
+                         
+                         <div className="border-2 border-l-0 border-black  w-[50%] ">
+                            <h1 className="text-center">{color} </h1>
+                         </div>   
+                    </div>
+
+                    <div className="flex ">
+                         <div className="border-2 border-t-0 border-black  w-[50%]">
+                            <h1 className="text-center">flash</h1>
+                         </div>
+                         
+                         <div className="border-2 border-t-0 border-l-0 border-black  w-[50%] ">
+                            <h1 className="text-center">{flash} </h1>
+                         </div>   
+                    </div>
+
+                    <div className="flex ">
+                         <div className="border-2 border-t-0 border-black  w-[50%]">
+                            <h1 className="text-center">Screen</h1>
+                         </div>
+                         
+                         <div className="border-2 border-t-0 border-l-0 border-black  w-[50%] ">
+                            <h1 className="text-center">{screen} </h1>
+                         </div>   
+                    </div>
+
+
+                    <div className="flex ">
+                         <div className="border-2 border-t-0 border-black  w-[50%]">
+                            <h1 className="text-center">Radio</h1>
+                         </div>
+                         
+                         <div className="border-2 border-t-0 border-l-0 border-black  w-[50%] ">
+                            <h1 className="text-center">{radio} </h1>
+                         </div>   
+                    </div>
+
+                    <div className="flex ">
+                         <div className="border-2 border-t-0 border-black  w-[50%]">
+                            <h1 className="text-center">usb</h1>
+                         </div>
+                         
+                         <div className="border-2 border-t-0 border-l-0 border-black  w-[50%] ">
+                            <h1 className="text-center">{usb}</h1>
+                         </div>   
+                    </div>
+   </div>
+
+
+
+   
+   <div className="mt-2">
+   <div className="border-2 border-b-0 border-black  w-full">
+                            <h1 className="text-center  bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500  font-bold ">Internal</h1>
+                         </div>
+
+                    <div className="flex ">
+                         <div className="border-2 border-black  w-[50%]">
+                            <h1 className="text-center">faceLock</h1>
+                         </div>
+                         
+                         <div className="border-2 border-l-0 border-black  w-[50%] ">
+                            <h1 className="text-center">{faceLock} </h1>
+                         </div>   
+                    </div>
+
+                    <div className="flex ">
+                         <div className="border-2 border-t-0 border-black  w-[50%]">
+                            <h1 className="text-center">finger</h1>
+                         </div>
+                         
+                         <div className="border-2 border-t-0 border-l-0 border-black  w-[50%] ">
+                            <h1 className="text-center">{finger} </h1>
+                         </div>   
+                    </div>
+
+                    <div className="flex ">
+                         <div className="border-2 border-t-0 border-black  w-[50%]">
+                            <h1 className="text-center">network</h1>
+                         </div>
+                         
+                         <div className="border-2 border-t-0 border-l-0 border-black  w-[50%] ">
+                            <h1 className="text-center">{network} </h1>
+                         </div>   
+                    </div>
+
+
+                    <div className="flex ">
+                         <div className="border-2 border-t-0 border-black  w-[50%]">
+                            <h1 className="text-center">sim</h1>
+                         </div>
+                         
+                         <div className="border-2 border-t-0 border-l-0 border-black  w-[50%] ">
+                            <h1 className="text-center">{sim} </h1>
+                         </div>   
+                    </div>
+
+                    
+   </div>
                     
             </Responsive>
         </div>
