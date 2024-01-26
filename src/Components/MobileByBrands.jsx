@@ -17,6 +17,24 @@ const MobileByBrands = () => {
     },
   });
 
+  const Samsung=mobiles.filter(mobile=>mobile?.brand==='Samsung')
+  const Apple=mobiles.filter(mobile=>mobile?.brand==='Apple')
+  const VIVO=mobiles.filter(mobile=>mobile?.brand==='VIVO')
+  const OPPO=mobiles.filter(mobile=>mobile?.brand==='OPPO')
+  const NOKIA=mobiles.filter(mobile=>mobile?.brand==='NOKIA')
+  const onePlus=mobiles.filter(mobile=>mobile?.brand==='onePlus')
+  const Motorola=mobiles.filter(mobile=>mobile?.brand==='Motorola')
+  const Huawei=mobiles.filter(mobile=>mobile?.brand==='Huawei')
+  const LG=mobiles.filter(mobile=>mobile?.brand==='LG')
+  const Google=mobiles.filter(mobile=>mobile?.brand==='Google')
+  const Infinix=mobiles.filter(mobile=>mobile?.brand==='Infinix')
+  const Tesla=mobiles.filter(mobile=>mobile?.brand==='Tesla')
+  const Lava=mobiles.filter(mobile=>mobile?.brand==='Lava')
+  const htc=mobiles.filter(mobile=>mobile?.brand==='htc')
+  const Sony=mobiles.filter(mobile=>mobile?.brand==='Sony')
+
+  // console.log(htc);
+
     return (
         <div className='border-t mt-10 border-black'>
              <Tabs>
@@ -27,14 +45,14 @@ const MobileByBrands = () => {
       <Tab>VIVO</Tab>
       <Tab>OPPO</Tab>
       <Tab>NOKIA</Tab>
-      <Tab>Real Me</Tab>
+      
       <Tab>One Plus</Tab>
       <Tab>Motorola</Tab>
       <Tab>Huawei</Tab>
       <Tab>LG</Tab>
       <Tab>Google</Tab>
       <Tab>Infinix</Tab>
-      <Tab>Techno</Tab>
+      
       <Tab>Tesla</Tab>
       <Tab>Lava</Tab>
       <Tab>htc</Tab>
@@ -45,9 +63,53 @@ const MobileByBrands = () => {
      
       <Mobiles mobiles={mobiles}></Mobiles>
     </TabPanel>
+
     <TabPanel>
-      <h2>Any content 2</h2>
+      <Mobiles mobiles={Samsung} />
     </TabPanel>
+    <TabPanel>
+      <Mobiles mobiles={Apple} />
+    </TabPanel>
+    <TabPanel>
+      <Mobiles mobiles={VIVO} />
+    </TabPanel>
+    <TabPanel>
+      <Mobiles mobiles={OPPO} />
+    </TabPanel>
+    <TabPanel>
+      <Mobiles mobiles={NOKIA} />
+    </TabPanel>
+    <TabPanel>
+      <Mobiles mobiles={onePlus} />
+    </TabPanel>
+    <TabPanel>
+      <Mobiles mobiles={Motorola} />
+    </TabPanel>
+    <TabPanel>
+      <Mobiles mobiles={Huawei} />
+    </TabPanel>
+    <TabPanel>
+      <Mobiles mobiles={LG} />
+    </TabPanel>
+    <TabPanel>
+      <Mobiles mobiles={Google} />
+    </TabPanel>
+    <TabPanel>
+      <Mobiles mobiles={Infinix} />
+    </TabPanel>
+    <TabPanel>
+      <Mobiles mobiles={Tesla} />
+    </TabPanel>
+    <TabPanel>
+      <Mobiles mobiles={Lava} />
+    </TabPanel>
+    <TabPanel>
+      <Mobiles mobiles={htc} />
+    </TabPanel>
+    <TabPanel>
+      <Mobiles mobiles={Sony} />
+    </TabPanel>
+
   </Tabs>
         </div>
     );
