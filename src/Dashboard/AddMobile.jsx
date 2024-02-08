@@ -19,7 +19,7 @@ const AddMobile = () => {
 
    const handleSubmit=async e=>{
        e.preventDefault()
-     
+      //  console.log('click 1');
        const form=e.target;
        const name=form.mobile.value;
        const brand=category;
@@ -43,11 +43,22 @@ const AddMobile = () => {
        const usb=form.usb.value;
        const radio=form.radio.value;
        const faceLock=form.faceLock.value;
+       const Launcherdate=form.Launcherdate.value;
+       const Display=form.Display.value;
+       const Dimension=form.Dimension.value;
+       const screnSize=form.scrensize.value;
+       const protection=form.protection.value;
+       const features=form.features.value;
+       const charging=form.charging.value;
+       const blutooth=form.blutooth.value;
+       const videoRezulation=form.videoRezulation.value;
+       const Wlan=form.Wlan.value;
 
        const mobile={
-        name,brand,ram,rom,battery,processor,camara,price,color,screen,finger,flash,status,network,image,addedBy,fontCamara,sim,usb,radio,faceLock
+        name,brand,ram,rom,battery,processor,camara,price,color,screen,finger,flash,status,network,image,addedBy,fontCamara,sim,usb,radio,faceLock,Launcherdate,Display,Dimension,screnSize,protection,features,charging,blutooth,videoRezulation,Wlan
        }
 
+      //  console.log('click 2');
      const result=await axiosSecure.post('/mobiles',mobile)
       if(result.data.insertedId){
         swal('success','Your mobile is added','success')
@@ -221,10 +232,6 @@ const AddMobile = () => {
              </div>
 
 
-
-
-
-
              <div className="flex gap-2">
       <div className="form-control w-[20%]">
           <label className="label">
@@ -259,6 +266,91 @@ const AddMobile = () => {
           </label>
           <input type="text" name="faceLock" placeholder="Face-lock" className="input border-pink-500 input-bordered" required />        
         </div>
+
+
+
+
+
+
+             </div>
+
+
+             <div className="flex gap-2">
+      <div className="form-control w-[20%]">
+          <label className="label">
+            <span className="label-text">Launcher date</span>
+          </label>
+          <input type="text" name="Launcherdate" placeholder="LauncherDate" className="input input-bordered border-purple-500" required />
+        </div>
+        <div className="form-control  w-[20%]">
+          <label className="label">
+            <span className="label-text">Display</span>
+          </label>
+          <input type="text" name="Display" placeholder="Display" className="input input-bordered border-purple-400" required />        
+        </div>
+
+        <div className="form-control  w-[20%]">
+          <label className="label">
+            <span className="label-text">Dimension</span>
+          </label>
+          <input type="text" name="Dimension" placeholder="Dimension" className="input border-purple-300 input-bordered" required />        
+        </div>
+
+        <div className="form-control  w-[20%]">
+          <label className="label">
+            <span className="label-text">screnSize</span>
+          </label>
+          <input type="text" name="screnSize" placeholder="screnSize" className="input border-pink-400 input-bordered" required />        
+        </div>
+
+        <div className="form-control  w-[20%]">
+          <label className="label">
+            <span className="label-text">protection</span>
+          </label>
+          <input type="text" name="protection" placeholder="protection" className="input border-pink-500 input-bordered" required />        
+        </div>
+
+             </div>
+
+
+
+             <div className="flex gap-2">
+      <div className="form-control w-[20%]">
+          <label className="label">
+            <span className="label-text">features</span>
+          </label>
+          <input type="text" name="features" placeholder="features" className="input input-bordered border-purple-500" required />
+        </div>
+        <div className="form-control  w-[20%]">
+          <label className="label">
+            <span className="label-text">charging</span>
+          </label>
+          <input type="text" name="charging" placeholder="charging" className="input input-bordered border-purple-400" required />        
+        </div>
+
+        <div className="form-control  w-[20%]">
+          <label className="label">
+            <span className="label-text">blutooth</span>
+          </label>
+          <input type="text" name="blutooth" placeholder="blutooth" className="input border-purple-300 input-bordered" required />        
+        </div>
+
+        <div className="form-control  w-[20%]">
+          <label className="label">
+            <span className="label-text">videoRezulation</span>
+          </label>
+          <input type="text" name="videoRezulation" placeholder="videoRezulation" className="input border-pink-400 input-bordered" required />        
+        </div>
+
+        <div className="form-control  w-[20%]">
+          <label className="label">
+            <span className="label-text">Wlan</span>
+          </label>
+          <input type="text" name="Wlan" placeholder="Wlan" className="input border-pink-500 input-bordered" required />        
+        </div>
+
+
+       
 
 
 

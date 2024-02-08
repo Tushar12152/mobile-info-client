@@ -22,15 +22,15 @@ const Mobiles = ({ mobiles }) => {
   return (
     <div className="py-10">
       <Responsive>
-        <div className="flex gap-4 ">
-          <div className="border-2 min-h-screen border-gray-300 w-[80%] rounded-md">
+        <div className="lg:flex gap-4 ">
+          <div className="border-2 min-h-screen border-gray-300 lg:w-[80%]  mb-6 lg:mb-0 rounded-md">
             <div className="grid p-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 ">
               {mobiles.map((mobile) => (
                 <Mobile key={mobile} mobile={mobile} />
               ))}
             </div>
           </div>
-          <div className="border-2 min-h-screen border-gray-300 w-[20%] rounded-md">
+          <div className="border-2 min-h-screen border-gray-300 lg:w-[20%] rounded-md">
             {adds.map((add) => (
               <div key={add?._id}>
                 <div className="card w-60 p-2 mx-auto mt-2 bg-base-100 shadow-xl image-full">
